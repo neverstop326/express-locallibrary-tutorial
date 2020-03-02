@@ -1,0 +1,519 @@
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ node
+Welcome to Node.js v12.15.0.
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ ls
+app.js                  controllers             node_modules            package.json            public                  views
+bin                     models                  package-lock.json       populate.js             routes
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ node
+Welcome to Node.js v12.15.0.
+Type ".help" for more information.
+> let demo = reqire("./models/magaine")
+Thrown:
+ReferenceError: reqire is not defined
+> let demo = require("./models.magazine")
+Thrown:
+SyntaxError: Identifier 'demo' has already been declared> let demo2 = require("./models.magazine")Thrown:
+Error: Cannot find module './models.magazine'
+Require stack:
+- <repl>
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:793:17)
+    at Function.Module._load (internal/modules/cjs/loader.js:686:27)
+    at Module.require (internal/modules/cjs/loader.js:848:19)
+    at require (internal/modules/cjs/helpers.js:74:18) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '<repl>' ]
+}
+> let demo3 = require("./models.magazine.js")
+Thrown:
+Error: Cannot find module './models.magazine.js'
+Require stack:
+- <repl>
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:793:17)
+    at Function.Module._load (internal/modules/cjs/loader.js:686:27)
+    at Module.require (internal/modules/cjs/loader.js:848:19)
+    at require (internal/modules/cjs/helpers.js:74:18) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [ '<repl>' ]
+}
+> let demo4 = require("./models/magazine.js")
+undefined
+> var Magazine1 = new Magazine({ title: "demo title", publisher: "demo publisher", issue:"demo issue", pages: {300}, publication_date:{Date.now()  });
+Thrown:
+var Magazine1 = new Magazine({ title: "demo title", publisher: "demo publisher", issue:"demo issue", pages: {300}, publication_date:{Date.now()  });
+                                                                                                                ^
+
+SyntaxError: Unexpected token '}'
+> var Magazine1 = new Magazine({ title: "demo title", publisher: "demo publisher", issue:"demo issue", pages: {300}, publication_date:{Date.now() } });
+ 
+Thrown:
+var Magazine1 = new Magazine({ title: "demo title", publisher: "demo publisher", issue:"demo issue", pages: {300}, publication_date:{Date.now() } });
+                                                                                                                ^
+
+SyntaxError: Unexpected token '}'
+> var Magazine1 = new Magazine({ title: "demo title", publisher: "demo publisher", issue:"demo issue", pages: 30 })
+Thrown:
+ReferenceError: Magazine is not defined
+> let Magazine = require("./models/magazine.js")
+undefined
+> Magazine mag = new Magazine({ title: "demo title", publisher: "demo publisher", issue: "demo issue", pages: {30} })
+Thrown:
+Magazine mag = new Magazine({ title: "demo title", publisher: "demo publisher", issue: "demo issue", pages: {30} })
+         ^^^
+
+SyntaxError: Unexpected identifier
+> Magazine mag = new Magazine({ title: "demo title", publisher: "demo publisher", issue: "demo issue", pages: 30  })
+Thrown:
+Magazine mag = new Magazine({ title: "demo title", publisher: "demo publisher", issue: "demo issue", pages: 30  })
+         ^^^
+
+SyntaxError: Unexpected identifier
+> ls
+Thrown:
+ReferenceError: ls is not defined
+> import popilate 
+Thrown:
+import popilate 
+^^^^^^
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ npm run dev 
+npm ERR! missing script: dev
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/seungjaeyun/.npm/_logs/2020-02-14T00_51_34_859Z-debug.log
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ npm run devstart 
+
+> express-local-library-demo@0.0.0 devstart /Users/seungjaeyun/myapp/local-library-demo/express-local-library-demo
+> nodemon ./bin/www
+
+[nodemon] 2.0.2
+[nodemon] to restart at any time, enter `rs`
+[nodemon] watching dir(s): *.*
+[nodemon] watching extensions: js,mjs,json
+[nodemon] starting `node ./bin/www`
+(node:842) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+GET / 304 301.432 ms - -
+GET /stylesheets/style.css 304 1.229 ms - -
+GET /favicon.ico 404 11.996 ms - 2369
+^C
+Seungjaes-MacBook-Pro:express-local-library-demo seungjaeyun$ node 
+Welcome to Node.js v12.15.0.
+Type ".help" for more information.
+> let man = require("mongoose")
+undefined
+> man.connect('mongodb+srv://seungjae:lbz04tap59@cluster0-isqny.azure.mongodb.net/test?retryWrites=true&w=majority',  {useNewUrlParser: true}); 
+Promise { <pending> }
+> (node:850) DeprecationWarning: current Server Discovery and Monitoring engine is deprecated, and will be removed in a future version. To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+> let maga = require("./models/magazine.js")
+undefined
+> maga myMagazine = new maga({ title: "demo title", publisher: "demo publisher", issue: "sample issue" });
+Thrown:
+maga myMagazine = new maga({ title: "demo title", publisher: "demo publisher", issue: "sample issue" });
+     ^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+> maga myMagazine = new maga({ "demo title", "demo publisher", "sample issue" });
+Thrown:
+maga myMagazine = new maga({ "demo title", "demo publisher", "sample issue" });
+     ^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+> let db = man.connect('mongodb+srv://seungjae:lbz04tap59@cluster0-isqny.azure.mongodb.net/test?retryWrites=true&w=majority',  {useNewUrlParser: true})
+; 
+undefined
+> db
+Promise {
+  Mongoose {
+    connections: [ [NativeConnection] ],
+    models: { Magazine: Model { Magazine } },
+    modelSchemas: { Magazine: [Schema] },
+    options: { pluralization: true, [Symbol(mongoose:default)]: true },
+    _pluralize: [Function: pluralize],
+    Schema: [Function: Schema] {
+      reserved: [Object: null prototype],
+      Types: [Object],
+      ObjectId: [Function]
+    },
+    model: [Function],
+    plugins: [ [Array], [Array], [Array], [Array] ]
+  }
+}
+> man
+Mongoose {
+  connections: [
+    NativeConnection {
+      base: [Circular],
+      collections: [Object],
+      models: [Object],
+      config: [Object],
+      replica: false,
+      options: null,
+      otherDbs: [],
+      relatedDbs: {},
+      states: [Object: null prototype],
+      _readyState: 1,
+      _closeCalled: false,
+      _hasOpened: true,
+      plugins: [],
+      id: 0,
+      _listening: false,
+      _connectionOptions: [Object],
+      client: [MongoClient],
+      '$initialConnection': [Promise],
+      name: 'test',
+      host: 'cluster0-shard-00-00-isqny.azure.mongodb.net',
+      port: 27017,
+      user: 'seungjae',
+      pass: 'lbz04tap59',
+      db: [Db]
+    }
+  ],
+  models: { Magazine: Model { Magazine } },
+  modelSchemas: {
+    Magazine: Schema {
+      obj: [Object],
+      paths: [Object],
+      aliases: {},
+      subpaths: {},
+      virtuals: [Object],
+      singleNestedPaths: {},
+      nested: {},
+      inherits: {},
+      callQueue: [],
+      _indexes: [],
+      methods: {},
+      methodOptions: {},
+      statics: {},
+      tree: [Object],
+      query: {},
+      childSchemas: [],
+      plugins: [Array],
+      '$id': 1,
+      s: [Object],
+      _userProvidedOptions: {},
+      options: [Object],
+      '$globalPluginsApplied': true
+    }
+  },
+  options: { pluralization: true, [Symbol(mongoose:default)]: true },
+  _pluralize: [Function: pluralize],
+  Schema: [Function: Schema] {
+    reserved: [Object: null prototype] {
+      populated: 1,
+      remove: 1,
+      validate: 1,
+      toObject: 1,
+      schema: 1,
+      save: 1,
+      modelName: 1,
+      get: 1,
+      isNew: 1,
+      isModified: 1,
+      init: 1,
+      errors: 1,
+      db: 1,
+      collection: 1,
+      removeListener: 1,
+      listeners: 1,
+      once: 1,
+      on: 1,
+      emit: 1,
+      prototype: 1
+    },
+    Types: {
+      String: [Function],
+      Number: [Function],
+      Boolean: [Function],
+      DocumentArray: [Function],
+      Embedded: [Function: SingleNestedPath],
+      Array: [Function],
+      Buffer: [Function],
+      Date: [Function],
+      ObjectId: [Function],
+      Mixed: [Function],
+      Decimal: [Function],
+      Decimal128: [Function],
+      Map: [Function: Map],
+      Oid: [Function],
+      Object: [Function],
+      Bool: [Function],
+      ObjectID: [Function]
+    },
+    ObjectId: [Function: ObjectId] {
+      schemaName: 'ObjectId',
+      get: [Function],
+      _checkRequired: [Function],
+      _cast: [Function: castObjectId],
+      cast: [Function: cast],
+      checkRequired: [Function]
+    }
+  },
+  model: [Function],
+  plugins: [
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ]
+  ]
+}
+> man
+Mongoose {
+  connections: [
+    NativeConnection {
+      base: [Circular],
+      collections: [Object],
+      models: [Object],
+      config: [Object],
+      replica: false,
+      options: null,
+      otherDbs: [],
+      relatedDbs: {},
+      states: [Object: null prototype],
+      _readyState: 1,
+      _closeCalled: false,
+      _hasOpened: true,
+      plugins: [],
+      id: 0,
+      _listening: false,
+      _connectionOptions: [Object],
+      client: [MongoClient],
+      '$initialConnection': [Promise],
+      name: 'test',
+      host: 'cluster0-shard-00-00-isqny.azure.mongodb.net',
+      port: 27017,
+      user: 'seungjae',
+      pass: 'lbz04tap59',
+      db: [Db]
+    }
+  ],
+  models: { Magazine: Model { Magazine } },
+  modelSchemas: {
+    Magazine: Schema {
+      obj: [Object],
+      paths: [Object],
+      aliases: {},
+      subpaths: {},
+      virtuals: [Object],
+      singleNestedPaths: {},
+      nested: {},
+      inherits: {},
+      callQueue: [],
+      _indexes: [],
+      methods: {},
+      methodOptions: {},
+      statics: {},
+      tree: [Object],
+      query: {},
+      childSchemas: [],
+      plugins: [Array],
+      '$id': 1,
+      s: [Object],
+      _userProvidedOptions: {},
+      options: [Object],
+      '$globalPluginsApplied': true
+    }
+  },
+  options: { pluralization: true, [Symbol(mongoose:default)]: true },
+  _pluralize: [Function: pluralize],
+  Schema: [Function: Schema] {
+    reserved: [Object: null prototype] {
+      populated: 1,
+      remove: 1,
+      validate: 1,
+      toObject: 1,
+      schema: 1,
+      save: 1,
+      modelName: 1,
+      get: 1,
+      isNew: 1,
+      isModified: 1,
+      init: 1,
+      errors: 1,
+      db: 1,
+      collection: 1,
+      removeListener: 1,
+      listeners: 1,
+      once: 1,
+      on: 1,
+      emit: 1,
+      prototype: 1
+    },
+    Types: {
+      String: [Function],
+      Number: [Function],
+      Boolean: [Function],
+      DocumentArray: [Function],
+      Embedded: [Function: SingleNestedPath],
+      Array: [Function],
+      Buffer: [Function],
+      Date: [Function],
+      ObjectId: [Function],
+      Mixed: [Function],
+      Decimal: [Function],
+      Decimal128: [Function],
+      Map: [Function: Map],
+      Oid: [Function],
+      Object: [Function],
+      Bool: [Function],
+      ObjectID: [Function]
+    },
+    ObjectId: [Function: ObjectId] {
+      schemaName: 'ObjectId',
+      get: [Function],
+      _checkRequired: [Function],
+      _cast: [Function: castObjectId],
+      cast: [Function: cast],
+      checkRequired: [Function]
+    }
+  },
+  model: [Function],
+  plugins: [
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ]
+  ]
+}
+> man
+Mongoose {
+  connections: [
+    NativeConnection {
+      base: [Circular],
+      collections: [Object],
+      models: [Object],
+      config: [Object],
+      replica: false,
+      options: null,
+      otherDbs: [],
+      relatedDbs: {},
+      states: [Object: null prototype],
+      _readyState: 1,
+      _closeCalled: false,
+      _hasOpened: true,
+      plugins: [],
+      id: 0,
+      _listening: false,
+      _connectionOptions: [Object],
+      client: [MongoClient],
+      '$initialConnection': [Promise],
+      name: 'test',
+      host: 'cluster0-shard-00-00-isqny.azure.mongodb.net',
+      port: 27017,
+      user: 'seungjae',
+      pass: 'lbz04tap59',
+      db: [Db]
+    }
+  ],
+  models: { Magazine: Model { Magazine } },
+  modelSchemas: {
+    Magazine: Schema {
+      obj: [Object],
+      paths: [Object],
+      aliases: {},
+      subpaths: {},
+      virtuals: [Object],
+      singleNestedPaths: {},
+      nested: {},
+      inherits: {},
+      callQueue: [],
+      _indexes: [],
+      methods: {},
+      methodOptions: {},
+      statics: {},
+      tree: [Object],
+      query: {},
+      childSchemas: [],
+      plugins: [Array],
+      '$id': 1,
+      s: [Object],
+      _userProvidedOptions: {},
+      options: [Object],
+      '$globalPluginsApplied': true
+    }
+  },
+  options: { pluralization: true, [Symbol(mongoose:default)]: true },
+  _pluralize: [Function: pluralize],
+  Schema: [Function: Schema] {
+    reserved: [Object: null prototype] {
+      populated: 1,
+      remove: 1,
+      validate: 1,
+      toObject: 1,
+      schema: 1,
+      save: 1,
+      modelName: 1,
+      get: 1,
+      isNew: 1,
+      isModified: 1,
+      init: 1,
+      errors: 1,
+      db: 1,
+      collection: 1,
+      removeListener: 1,
+      listeners: 1,
+      once: 1,
+      on: 1,
+      emit: 1,
+      prototype: 1
+    },
+    Types: {
+      String: [Function],
+      Number: [Function],
+      Boolean: [Function],
+      DocumentArray: [Function],
+      Embedded: [Function: SingleNestedPath],
+      Array: [Function],
+      Buffer: [Function],
+      Date: [Function],
+      ObjectId: [Function],
+      Mixed: [Function],
+      Decimal: [Function],
+      Decimal128: [Function],
+      Map: [Function: Map],
+      Oid: [Function],
+      Object: [Function],
+      Bool: [Function],
+      ObjectID: [Function]
+    },
+    ObjectId: [Function: ObjectId] {
+      schemaName: 'ObjectId',
+      get: [Function],
+      _checkRequired: [Function],
+      _cast: [Function: castObjectId],
+      cast: [Function: cast],
+      checkRequired: [Function]
+    }
+  },
+  model: [Function],
+  plugins: [
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ],
+    [ [Function], [Object] ]
+  ]
+}
+> man.connect()
+Thrown:
+Error [MongooseError]: The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.
+    at new MongooseError (/Users/seungjaeyun/myapp/local-library-demo/express-local-library-demo/node_modules/mongoose/lib/error/mongooseError.js:10:11)
+    at NativeConnection.Connection.openUri (/Users/seungjaeyun/myapp/local-library-demo/express-local-library-demo/node_modules/mongoose/lib/connection.js:577:11)
+    at Mongoose.connect (/Users/seungjaeyun/myapp/local-library-demo/express-local-library-demo/node_modules/mongoose/lib/index.js:332:15) {
+  message: 'The `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.',
+  name: 'MongooseError'
+}
+> maga myMagazine = new maga({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
+Thrown:
+maga myMagazine = new maga({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
+     ^^^^^^^^^^
+
+SyntaxError: Unexpected identifier
+> let Magazine = require("./models/magazine")
+undefined
+> Magazine demo = new Magazine({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
+Thrown:
+Magazine demo = new Magazine({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
+         ^^^^
+
+SyntaxError: Unexpected identifier
+> var demo = new Magazine({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
+undefined
+> demo.save()
+Promise { <pending> }
+> var demo = new Magazine({ title:  "demo title", publisher: "demo publisher", issue: "sample issue" });
